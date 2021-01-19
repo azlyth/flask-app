@@ -2,15 +2,23 @@ version: '3'
 
 services:
 
-  web:
+  web_service:
     labels:
       shipyard.route: '/'
     build: '.'
+    env_file: 'environments/dev.env'
     depends_on:
       - postgres
       - redis
     ports:
       - '8080:8080'
+
+  worker_service:
+    build: '.'
+    env_file:
+      - 'environments/dev.env'
+    depends_on:
+      - web_service
 
   postgres:
     image: 'postgres:9.6-alpine'
