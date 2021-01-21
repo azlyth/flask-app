@@ -25,5 +25,10 @@ services:
   redis:
     image: 'redis:4-alpine'
 
+  redis-test:
+    image: 'redis:4-alpine'
+    working_dir: /tmp
+    command: 'sleep 3600'
+
 volumes:
   postgres:
