@@ -6,6 +6,8 @@ services:
     labels:
       shipyard.route: '/'
     build: '.'
+    volumes:
+      - './:/srv'
     depends_on:
       - postgres
       - redis
